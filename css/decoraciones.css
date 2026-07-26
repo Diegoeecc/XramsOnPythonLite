@@ -1,0 +1,7 @@
+#lienzo-decoraciones circle {
+  fill: var(--carmesi-brillante);
+}
+
+.grupo-decoracion {
+  animation: respirarPunto 6s ease-in-out infinite;
+}

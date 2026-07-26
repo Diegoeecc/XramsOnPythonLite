@@ -1,0 +1,25 @@
+:root {
+  /* Fondo */
+  --negro-abismo: #0a0908;
+  --negro-panel: #161311;
+  --negro-borde: #2a211d;
+
+  /* Rojos y carmesí */
+  --carmesi: #8b1e2f;
+  --carmesi-brillante: #c8283f;
+  --rojo-sangre: #4a0e14;
+  --rojo-ascua: #ff4d4d;
+
+  /* Texto */
+  --hueso: #e8e0d8;
+  --hueso-tenue: #9c8f86;
+
+  /* Tipografía */
+  --fuente-display: 'Rubik', sans-serif;
+  --fuente-cuerpo: 'IBM Plex Sans', sans-serif;
+  --fuente-mono: 'JetBrains Mono', monospace;
+
+  /* Layout */
+  --radio-borde: 14px;
+  --transicion-suave: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}

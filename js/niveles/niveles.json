@@ -1,0 +1,348 @@
+[
+  {
+    "id": 1,
+    "titulo": "Oyé, ¿Sabés que es una variable?",
+    "descripcion": "Aprende qué es una variable y los tipos de datos básicos de Python.",
+    "tema": "Variables",
+    "instrucciones": "Las variables son la base de cualquier dato en Python. Imaginatelo como que es una cajta en la cual puedes poner cualquier cosa.\n\nTu tarea: asignale el número '18' a la variable 'edad' y imprime su valor en la consola usando print(edad).",
+    "codigoInicial": "edad = \n# Asigna tu edad y escribe print debajo de esta línea\n",
+    "validacion": { "tipo": "salida_contiene", "valor": "18" }
+  },
+  {
+    "id": 2,
+    "titulo": "Enteros y decimas con otro nombre",
+    "descripcion": "Trabaja con números enteros y flotantes, y las operaciones entre ellos.",
+    "tema": "Variables",
+    "instrucciones": "En Python un entero y una decimal no son lo mismo. En este ambiente, las decimas se llaman flotantes, te pongo el ejemplo con el número 1: Entero = 1, Flotante = 1.00.\n\nTu tarea: Calcula el total (manzanas * precio), guárdalo en una variable llamada 'total' y luego imprímela.",
+    "codigoInicial": "manzanas = 7\nprecio = 3.5\n\n# Calcula el total aquí\n",
+    "validacion": [ { "tipo": "variable", "nombre": "total", "valor": 24.5 }, {"tipo":"salida_contiene","valor": 24.5} ]
+  },
+  {
+    "id": 3,
+    "titulo": "Strings y su magia",
+    "descripcion": "Crea y manipula texto: concatenación, longitud y formato básico.",
+    "tema": "Variables",
+    "instrucciones": "Los strings son en palabras simples son una cadena de texto, los puedes identificar facil ya que estan entre comillas. Recuerda que un número dentro de un string es considerado solo texto.\n\nTu tarea: Crea una variable 'nombreCompleto' que una ambas separadas por un espacio, e imprímela. Para unir strings sigue la siguiente formula: ejemplo = nombre + ' ' + apellido",
+    "codigoInicial": "nombre = \"Ana\"\napellido = \"García\"\n\n# Crea nombre_completo aquí\n",
+    "validacion": { "tipo": "salida_contiene", "valor": "Ana García" }
+  },
+  {
+    "id": 4,
+    "titulo": "True y False. Los Booleanos",
+    "descripcion": "Descubre los valores True y False y cómo representan verdad o falsedad.",
+    "tema": "Variables",
+    "instrucciones": "Los booleanos son el tipo de variable más facil de entender, un simple si o no.\n\nTu tarea: Crea una variable booleana 'ejemplo' que sea true e imprimela",
+    "codigoInicial": "edad = 20\n\n# Crea puede_votar aquí\n",
+    "validacion": { "tipo": "variable", "nombre": "ejemplo", "valor": true }
+  },
+  {
+    "id": 5,
+    "titulo": "Transforma datos a tu gusto",
+    "descripcion": "Convierte entre tipos de dato y asigna varias variables a la vez.",
+    "tema": "Variables",
+    "instrucciones": "En Python los datos enteros y flotantes se pueden convertir libremente entre si, pero convertir un string a número requiere que el texto del string sea un número real.\n\nTu tarea: Convierte 'precio' a entero con int() y guárdalo en si mismo'. Luego, en una sola línea, crea 'a, b, c = 1, 2, 3' (asignación múltiple). Imprime la suma de precio con cada letra.",
+    "codigoInicial": "precio = \"25\"\n\n# Convierte y usa asignación múltiple aquí\n",
+    "validacion": { "tipo": "salida_contiene", "valor": "31" }
+  },
+  {
+    "id": 6,
+    "titulo": "¿Comó realmente se aplica las matématicas?",
+    "descripcion": "Suma, resta, multiplicación, división, módulo y potencia.",
+    "tema": "Operadores",
+    "instrucciones": "Conoce a la tortuguita de Python, esta compañera nos ayudara a ver nuestro codigo de distintas maneras.\n\nTu tarea: Haz una linea segun los datos que ya estan ahi: 'distancia' = base * altura, y usa turtle.forward(distancia) para mover la tortuga esa cantidad de pasos.",
+    "codigoInicial": "import turtle\nbase = 60\naltura = 3\n\n# Calcula distancia y mueve la tortuga\n",
+    "validacion": { "tipo": "tortuga_posicion", "x": 180, "y": 0, "tolerancia": 5 },
+    "usaTortuga":true
+  },
+  {
+    "id": 7,
+    "titulo": "¿Esto, lo otro o nada?",
+    "descripcion": "Compara valores con operadores ==, !=, >, <, >= y <=.",
+    "tema": "Operadores",
+    "instrucciones": "Empecemos a ver que podemos comparar. Recuerda que = y == NO son lo mismo, uno es para asignar y otro es para comparar. El resultado de una comparación siempre es un booleano.\n\nTu tarea: Imprime el resultado de comparar si a es mayor que b, usando print(a > b).",
+    "codigoInicial": "a = 15\nb = 9\n\n# Imprime la comparación aquí\n",
+    "validacion": { "tipo": "salida_contiene", "valor": "True" }
+  },
+  {
+    "id": 8,
+    "titulo": "¡Añade más condiciones a tus condicionales!",
+    "descripcion": "Combina condiciones con and, or y not.",
+    "tema": "Condicionales",
+    "instrucciones": "Para añadir más condiciones usamos 'and', si queremos que sea una u otra usamos 'or', si queremos que NO se este cumpliendo una condicion usamos, pues..., 'not'. Espero que no sea muy redundante.\n\nTu tarea: Crea 'puede_entrar' combinando ambas variables con 'and'. Imrpime su valor y asegurate que de true",
+    "codigoInicial": "tiene_boleto = True\nes_mayor_edad = True\n\n# Crea puede_entrar aquí\n",
+    "validacion": [ { "tipo": "variable", "nombre": "puede_entrar", "valor": true }, {"tipo":"salida_contiene","valor": true} ]
+  },
+  {
+    "id": 9,
+    "titulo": "Para escritores rápidos",
+    "descripcion": "Simplifica tu código con +=, -=, *= y más.",
+    "tema": "Variables",
+    "instrucciones": "¿Te da flojera escribir: variable = variable + 1? Este es tu dia.\n\nTu tarea: Usa el operador += para sumarle 25 a 'puntos', luego imprímela.",
+    "codigoInicial": "puntos = 100\n\n# Usa += aquí\n",
+    "validacion": { "tipo": "salida_contiene", "valor": "125" }
+  },
+  {
+    "id": 10,
+    "titulo": "Orden en las mates, y aqui tambien",
+    "descripcion": "Entiende en qué orden Python evalúa una expresión.",
+    "tema": "Variables",
+    "instrucciones": "¿Recuerdas PEMDAS? Pues aqui tambien esta. Nimodo.\n\nTu tarea: Usa tu conocimiento en PEMDAS para ordenar las variables en el print, asegurate que el resultado te de 1",
+    "codigoInicial": "a = 4\nb = 9\nc = 2\nprint(a - b * c)",
+    "validacion": { "tipo": "salida_exacta", "valor": "1" }
+  },
+  {
+    "id": 11,
+    "titulo": "Si pasa esto... O si no...",
+    "descripcion": "Haz que tu programa tome decisiones según una condición.",
+    "tema": "Condicionales",
+    "instrucciones": "Tu mayor filtro en Python son las condicionales. Te doy su estructura: if 'condición':, para un else no necesitas condición, pero si revisa su identación. Para comparar recuerda los operadores: x == y, x > y, x < y\n\nTu tarea: Si la temperatura es menor a 18, imprime 'Hace frío'; si no, imprime 'Está agradable'.",
+    "codigoInicial": "temperatura = 15\n\n# Escribe tu if/else aquí\n",
+    "validacion": { "tipo": "salida_contiene", "valor": "Hace frío" }
+  },
+  {
+    "id": 12,
+    "titulo": "O si no, quiero que...",
+    "descripcion": "Evalúa varias condiciones distintas en cadena.",
+    "tema": "Condicionales",
+    "instrucciones": "Bueno, ¿Y si quiero más casos?, te presento: elif .\n\nTu tarea: Imprime 'A' si es >= 90, 'B' si es >= 80, 'C' si es >= 70, o 'F' en cualquier otro caso.",
+    "codigoInicial": "calificacion = 85\n\n# Escribe tu if/elif/else aquí\n",
+    "validacion": { "tipo": "salida_contiene", "valor": "B" }
+  },
+  {
+    "id": 13,
+    "titulo": "Condicionales extendidos",
+    "descripcion": "Añade más condiciones a tu código para tener respuestas más exactas.",
+    "tema": "Condicionales",
+    "instrucciones": "¿Si recuerdas los operadores lógicos? Sino aqui estan: and, or, not.\n\nTu tarea: Crea una serie de condicionales que impriman que tipo y sabor de paleta es. Sigue el mismo dialogo de print para pasar de nivel.",
+    "codigoInicial": "tipo = \"crema\"\nsabor = \"chocolate\"\nif tipo == \"agua\" and sabor == \"vainilla\":\n     print(\"Tu paleta de agua es de sabor vainilla\")\n# Continua poniendo elif",
+    "validacion": { "tipo": "salida_contiene", "valor": "Tu paleta de crema es de sabor chocolate" }
+  },
+  {
+    "id": 14,
+    "titulo": "Mucho print... mucho print... ¿Qué no se puede acortar esto?",
+    "descripcion": "Conoce los f-prints, imprime tus variables de una.",
+    "tema": "Condicionales",
+    "instrucciones": "Los f-print permiten imprimir variables en una sola linea y cuantas veces quieras. Tu solo escribe adentro de tu parentesis y se soluciona todo.\n\nTu tarea: Ajusta el print para que pueda imprimir variables. La 'f' se coloca asi: print(f\"tu texto {variable} más texto\")",
+    "codigoInicial": "tipo = \"crema\"\nsabor = \"chocolate\"\nprint(\"Tu paleta de _ es de sabor _\")",
+    "validacion": { "tipo": "salida_contiene", "valor": "Tu paleta de crema es de sabor chocolate" }
+  },
+  {
+    "id": 15,
+    "titulo": "Mide, Ejecuta, Repite",
+    "descripcion": "Repite instrucciones recorriendo un rango o una secuencia.",
+    "tema": "Bucles",
+    "instrucciones": "Los bucles te sirven para repetir acciones cuantas veces quieras, asi evitandote la necesidad de escribir tanto.\n\nTu tarea: Usa for i in range(4): para repetir 4 veces el movimiento de la tortuga: turtle.forward(80) y turtle.right(90).",
+    "codigoInicial": "import turtle\n\n# Escribe tu bucle for aquí\n",
+    "validacion": { "tipo": "tortuga_posicion", "x": 0, "y": 0, "tolerancia": 5 },
+    "usaTortuga":true
+  },
+  {
+    "id": 16,
+    "titulo": "Repitelo hasta que yo te diga",
+    "descripcion": "Repite instrucciones mientras una condición se cumpla.",
+    "tema": "Bucles",
+    "instrucciones": "Si necesitas repetir algo pero que las repeticiones dependan de una variable, esta el while.\n\nTu tarea: Usa un bucle while para imprimir el valor de 'contador' y disminuirlo en 1, mientras sea mayor a 0 (debe imprimir 5, 4, 3, 2 y 1, cada uno en su propia línea). Ejemplo: while contador > 0:",
+    "codigoInicial": "contador = 5\n\n# Escribe tu bucle while aquí\n",
+    "validacion": { "tipo": "salida_exacta", "valor": "5\n4\n3\n2\n1" }
+  },
+  {
+    "id": 17,
+    "titulo": "Tu compañero en este trayecto esta aqui",
+    "descripcion": "Crea bloques de código reutilizables con def.",
+    "tema": "Funciones",
+    "instrucciones": "Las funciones son bloques que ejecutan el código que se encuentra adentro solo cuando las llamas.\n\nTu tarea: Crea una función llamada 'estado' que imprima 'Motores = Listos' y 'Batería = 100%'",
+    "codigoInicial": "def inicio():\n    print(\"==============================\")\n    print(\"  SISTEMA INICIALIZADO v1.0  \")\n    print(\"==============================\")\n# Crea tu función aqui",
+    "validacion": { "tipo": "salida_contiene", "valor": "==============================\n  SISTEMA INICIALIZADO v1.0  \n==============================\nMotores = Listos\nBatería = 100%" }
+  },
+  {
+    "id": 18,
+    "titulo": "Añade información a tus funciones",
+    "descripcion": "Pasa información a tus funciones para que trabajen con ella.",
+    "tema": "Funciones",
+    "instrucciones": "Vamos a hacer que nuestra querida tortuga haga un circulo. Pero para eso quiero que sepas que las funciones pueden recibir datos, estos se llaman parametros.\n\nTu tarea: Completa la función con turtle.circle(radius) y turtle.pencolor(color), asegurate de añadir un print que diga 'Circulo completo'.",
+    "codigoInicial": "import turtle\n\ndef DoTurtleCircle(radius, color):\n    # Aqui agrega la acción y el cambio de color",
+    "validacion": [{ "tipo": "tortuga_posicion", "x": 0, "y": 0, "tolerancia": 5 }, { "tipo": "salida_contiene", "valor": "Circulo completo" }],
+    "usaTortuga":true
+  },
+  {
+    "id": 19,
+    "titulo": "Envuelve procesos en cajitas",
+    "descripcion": "Haz que una función te devuelva un resultado.",
+    "tema": "Funciones",
+    "instrucciones": "Las funciones no solo pueden hacer calculos internos, tambien pueden devolverte resultados con la palabra magica 'return'.\n\nTu tarea: Crea una función llamada 'cuadrado' que reciba un número 'n' y con una variable interna calcule el cuadrado de n y lo devuelva con return. Llama la función con el número 9. Imprime el valor afuera de la función.",
+    "codigoInicial": "# Define cuadrado aquí\n",
+    "validacion": [{ "tipo": "funcion", "nombre": "cuadrado", "argumentos": [9], "retorno": 81 }, { "tipo": "salida_contiene", "valor": 81 }]
+  },
+  {
+    "id": 20,
+    "titulo": "Try and error",
+    "descripcion": "Evitate errores con el uso de try/except",
+    "tema": "Condicionales",
+    "instrucciones": "Cuando uno usa try/except no solo se ve profesional, es de uso excepcional.\n\nTu tarea: Usa try: y abajo coloca: texto = 'abc', abajo de texto: num = int(texto), y un print abajo: '¡Hola usuario{ num }!'. Después coloca abajo: except ValueError: e imprime: '¡Hola Invitado!'.",
+    "codigoInicial": "# Escribe try aqui\n",
+    "validacion": { "tipo": "salida_contiene", "valor": "¡Hola Invitado!" }
+  },
+  {
+    "id": 21,
+    "titulo": "Del rancho para el mundo",
+    "descripcion": "Entiende el alcance de tus variables y por que las funciones no pueden modificarlas directamente.",
+    "tema": "Funciones",
+    "instrucciones": "Las variables son universales mientras esten afuera de cualquier función, pero cuando modificas una variable en una función sea crea solo una copia de si misma que solo se usa en la función. ¿La solución? Usa 'global'.\n\nTu tarea: Crea una función donde se modifque globalmente 'MiNum' haciendo que valga 6200. Imprime el valor de 'MiNum' afuera de la función",
+    "codigoInicial": "MiNum = 1234\n",
+    "validacion": [{"tipo":"variable","nombre":"MiNum","valor":6200}, {"tipo":"salida_contiene","valor":6200}]
+  },
+  {
+    "id": 22,
+    "titulo": "Tipado de funciones",
+    "descripcion": "El tipado de funciones te dice exactamente que tipo de valor debe devolver una función.",
+    "tema": "Funciones",
+    "instrucciones": "Por medio de una super flecha (->) se dice que tipo de valor va a devolver: int, bool, str, float...\n\nTu tarea: Crea una función donde reciba a y b, agregale una flecha después los parametros: def suma(a, b) -> int:. Crea una variable afuera de la función (pero abajo) y llama suma() con los valores 5 y 10. Devuelve el valor e imprime la variable",
+    "codigoInicial": "# Escribe tu función aqui\n",
+    "validacion": { "tipo": "salida_contiene", "valor": 15 }
+  },
+  {
+    "id": 23,
+    "titulo": "¿Pero que hago si tengo muchas variables?",
+    "descripcion": "Guarda varios valores juntos y accede a ellos por posición.",
+    "tema": "Listas y diccionarios",
+    "instrucciones": "La belleza de tener control de variables desde una sola.\n\nTu tarea: Imprime el segundo elemento de la lista usando frutas[el número del lugar donde esta el valor: lugar 0, lugar 1 o lugar 2](recuerda que Python empieza a contar desde 0).",
+    "codigoInicial": "frutas = [\"manzana\", \"pera\", \"uva\"]\n\n# Imprime el segundo elemento aquí\n",
+    "validacion": { "tipo": "salida_contiene", "valor": "pera" }
+  },
+  {
+    "id": 24,
+    "titulo": "Manten limpio tus listas",
+    "descripcion": "Agrega, quita y ordena elementos con los métodos de una lista.",
+    "tema": "Listas y diccionarios",
+    "instrucciones": "¿Se te olvido algun valor? No pasa nada, siempre esta la opción de agregar o quitar con append(TuValor) y remove(TuValor).\n\nTu tarea: Agrega el número 10 al final con append(), luego imprime la lista completa.",
+    "codigoInicial": "numeros = [1, 2, 3]\n\n# Usa append aquí\n",
+    "validacion": { "tipo": "salida_contiene", "valor": "10" }
+  },
+  {
+    "id": 25,
+    "titulo": "Vamos uno por uno",
+    "descripcion": "Trabaja con enumerate y accede al valor de cada elemento de una lista",
+    "tema": "Listas y diccionarios",
+    "instrucciones": "Cuando tengamos una lista y queremos modificar o usar varios valores al mismo tiempor se nos aparece 'enumerate'. \n\n Tu tarea: Usando for i, num in enumerate(ListaDeValores):, imprime la suma final en resultado.",
+    "codigoInicial": "ListaDeValores = [50, 61, 74, 96, 32, 25]\nresultado = 0",
+    "validacion": { "tipo": "salida_contiene", "valor": "338" }
+  },
+  {
+    "id": 26,
+    "titulo": "Una lista si fuera buena: diccionarios",
+    "descripcion": "Guarda información en pares de clave y valor.",
+    "tema": "Listas y diccionarios",
+    "instrucciones": "Los diccionarios son similares a las listas, pero aqui puedes guardar hasta funciones y listas bajo llaves.\n\nTu tarea: Imprime el valor de la clave 'nombre' (usa estudiante[\"nombre\"]).",
+    "codigoInicial": "estudiante = {\"nombre\": \"Marco\", \"edad\": 17}\n\n# Imprime el nombre aquí\n",
+    "validacion": { "tipo": "salida_contiene", "valor": "Marco" }
+  },
+  {
+    "id": 27,
+    "titulo": "Hojeando tus diccionarios",
+    "descripcion": "Recorre, actualiza y consulta un diccionario a fondo.",
+    "tema": "Listas y diccionarios",
+    "instrucciones": "Volvamos a usar cada elemento, pero ahora de un diccionario, usando items().\n\nTu tarea: Recorre el diccionario con un for producto, precio in precios.items():, e imprime cada producto de la siguiente manera: \"El producto {producto} cuesta ${precio}\"",
+    "codigoInicial": "precios = {\"pan\": 20, \"leche\": 25, \"huevo\": 40}\n\n# Recorre el diccionario aquí\n",
+    "validacion": { "tipo": "salida_contiene", "valor": "El producto pan cuesta $20\nEl producto leche cuesta $25\nEl producto huevo cuesta $40" }
+  },
+  {
+    "id": 28,
+    "titulo": "Uso de coordenadas. O más bien tuplas.",
+    "descripcion": "Crea una lista inmutable que funcione como coordenadas",
+    "tema": "Listas y diccionarios",
+    "instrucciones": "Las tuplas funcionan similar a las listas, pero su uso cotidiano es para manejar valores multiples al mismo tiempo.\n\nTu tarea: Usando una función, posiciona la tortuga en setpos(coordenada) y has que dibuje un cuadrado.",
+    "codigoInicial": "import turtle \ncoordenada = (25, 25)\n\n# Crea pares con comprensión de lista aquí\n",
+    "validacion": { "tipo": "tortuga_posicion", "x": 25, "y": 25, "tolerancia": 5 },
+    "usaTortuga": true
+  },
+  {
+    "id": 29,
+    "titulo": "Lambda, funciones con otro apodo y su auto return",
+    "descripcion": "Conoce el termino de 'lambda', el cual funciona muy similar a una función, pero sin nombre.",
+    "tema": "Listas y diccionarios",
+    "instrucciones": "La función de lambda funciona de la siguiente manera: UnaVariable = lambda (Algun Valor): (Tu operación). Ejemplo: cuadrado = lambda n: n * n, luego lo llamamos: cuadrado(5) ---> aqui valdria 25.(\n\nTu tarea: Usando un for i, num in enumerate(valores), vamos a convertir todos los valores al cuadrado, e imprimimos toda la lista al final.",
+    "codigoInicial": "valores = [2, 3, 4, 5]\ncuadrado = ",
+    "validacion": { "tipo": "salida_contiene", "valor": "[4, 9, 16, 25]" }
+  },
+  {
+    "id": 30,
+    "titulo": "Tengo mi receta, pero falta el material real",
+    "descripcion": "Una clase es como un plano o molde, y un objeto es la creación real basada en ese plano.",
+    "tema": "Clases",
+    "instrucciones": "Las clases son una agrupación de caracteristicas y acciones que definen un objeto. Por ejemplo: digamos que creamos una clase llamada ratita. Y te pregunto, ¿qué hace y como se ve una rata normalmente? es ahi donde ponemos: Class ratita: color = 'gris' def comer(): ... . \n\n Tu tarea: Esta una clase llamada 'perro' con la función ladrar. Crea una variable llamada 'mi_perro' y dale el molde de 'perro()' a 'mi_perro', asi todo lo que tenga la clase 'perro' lo puede hacer tu perro. Después de definir tu perro, has que ladre: mi_perro.ladrad().",
+    "codigoInicial": "class perro:\n    def ladrar(self):\n        print(\"guau\")\n\nmi_perro =",
+    "validacion": { "tipo": "salida_contiene", "valor": "guau" }
+  },
+  {
+    "id": 31,
+    "titulo": "Se despectivo. Más bien, describeme que ves",
+    "descripcion": "Dale características y comportamientos propios a tus clases.",
+    "tema": "Clases",
+    "instrucciones": "Las funciones dentro de una clase pueden tener parametros. Puedes llenar esos valores en tu objeto al momento de llamar esa función.\n\nTu tarea: Crea el objeto 'mi_pelota' y dale la clase 'pelota()', llama mi_pelota.color_de_pelota() pero agregale el parametro 'azul' a tu llamado.",
+    "codigoInicial": "class pelota:\n    def color_de_pelota(self, color):\n        print(\"Soy de color\", color)\n\n# Crea tu objeto 'mi_pelota'\n",
+    "validacion": { "tipo": "salida_contiene", "valor": "Soy de color azul" }
+  },
+  {
+    "id": 32,
+    "titulo": "El constructor __init__",
+    "descripcion": "Inicializa los datos de un objeto en cuanto se crea.",
+    "tema": "Clases",
+    "instrucciones": "Vamos a hacer que a las clases puedas darles sus propias caracteristicas, ¿Qué tal si quiero que mi_perro seja de color dorado?. \n\nTu tarea: Modifica la clase 'perro' para que reciba 'nombre' en su constructor (__init__) y lo guarde como self.nombre. Crea 'mi_perro' pasando \"Toby\", y llama a mi_perro.ladrar().",
+    "codigoInicial": "class perro:\n    def ladrar(self):\n        print(f\"{ self.nombre} dice: ¡Guau!\")\n\n# Agrega el constructor __init__ y crea mi_perro aquí\n",
+    "validacion": { "tipo": "salida_contiene", "valor": "Toby" }
+  },
+  {
+    "id": 33,
+    "titulo": "Se detecto un movimiento bancario",
+    "descripcion": "Protege los datos de una clase y dales múltiples formas de comportarse.",
+    "tema": "Variables",
+    "instrucciones": "No olvides que __init__ es lo primero que se ejecuta automaticamente al darle una clase a un obeto.\n\n Tu tarea: Agrega una función 'depositar' que sume un monto a self.TuSaldo, y 'consultar_saldo' que lo regrese. Crea 'cuenta = CuentaBancaria(100)', deposita 50 e imprime cuenta.consultar_saldo().",
+    "codigoInicial": "class CuentaBancaria:\n    def __init__(self, saldo_inicial):\n        self.TuSaldo = saldo_inicial\n\n    # Agrega depositar y consultar_saldo aquí\n\n# Crea la cuenta, deposita y muestra el saldo aquí\n",
+    "validacion": { "tipo": "salida_contiene", "valor": "150" }
+  },
+  {
+    "id": 34,
+    "titulo": "Top 10 cosas que no sabias que Python tiene",
+    "descripcion": "Usa las funciones integradas que tiene Python para hacer unas cuantas cosas",
+    "tema": "Variables",
+    "instrucciones": "Vamos a calculas muchos valores. Pero no te preocupes, te doy la función de cada función integrada.\n\nTu tarea: Completa la lista según el nombre de lo que se te pide.",
+    "codigoInicial": "temperaturas = [\"32\", \"12\", 15, \"-12\", 5, 40, \"57\"]\n\nresultados = {\n    \"cantidad\": 0.0,\n    \"promedio\": 0.0,\n    \"promedio_round\": 0.0,\n    \"temp_max\": 0.0,\n    \"temp_min\": 0.0,\n    \"min_abs\": 0.0,\n    \"max_pow\": 0.0\n}\n\n# Tienes que cambiar todos los valores a float\nfor i, t in enumerate(temperaturas):\n    temperaturas[i] = float(t)\n\n# len(valor) ---> te da la cantidad de valores\n# sum(lista) ---> suma todos los valores de una lista\n# max(valor) ---> encuentra el valor más alto de la lista\n# min(valor) ---> encuentra el valor más bajo de la lista\n# abs(numero) ---> devuelve el valor absoluto eliminando el signo negativo\n# round(numero) ---> redondea un número decimal\n# type(valor) ---> devuelve el tipo de dato de un objeto o variable\n# pow(base, exponente) ---> eleva un número a la potencia indicada\n# float(valor) ---> convierte un número o texto en un float\n\nresultados[\"cantidad\"] =\nresultados[\"promedio\"] = / resultados[\"cantidad\"]\nresultados[\"promedio_round\"] = \nresultados[\"temp_max\"] = \nresultados[\"temp_min\"] = \nresultados[\"min_abs\"] = \nresultados[\"max_pow\"] = pow(, 2)\n\nprint(resultados)",
+    "validacion": { "tipo": "salida_contiene", "valor": "{'cantidad': 7, 'promedio': 21.285714285714285, 'promedio_round': 21, 'temp_max': 57.0, 'temp_min': -12.0, 'min_abs': 12.0, 'max_pow': 3249.0}" }
+  },
+  {
+    "id": 35,
+    "titulo": "Import: La puerta al mundo y a los apis",
+    "descripcion": "Usa código ya hecho por otros con la instrucción import.",
+    "tema": "Librerias",
+    "instrucciones": "Veo que ya sabes como funcionan esos detalles que ya vienen con python. ¡Pero eso no es todo!, puedes añadir más funciones con 'Import'.\n\nTu tarea: Importa la librería 'math' y usa math.sqrt() para calcular la raíz cuadrada de 81. Imprímela.",
+    "codigoInicial": "# Importa math y calcula la raíz cuadrada aquí\n",
+    "validacion": { "tipo": "salida_contiene", "valor": "9" }
+  },
+  {
+    "id": 36,
+    "titulo": "¿Te gustan las mates? ¿Que tal esto?",
+    "descripcion": "Resuelve operaciones matemáticas más avanzadas.",
+    "tema": "Librerias",
+    "instrucciones": "La libreria de 'math' incluye practicamente todas las operaciones posibles en las mates.\n\nTu tarea: Usa math.pi y math.floor() para calcular el piso de (math.pi * 10), e imprímelo.",
+    "codigoInicial": "import math\n\n# Calcula el piso de math.pi * 10 aquí\n",
+    "validacion": { "tipo": "salida_contiene", "valor": "31" }
+  },
+  {
+    "id": 37,
+    "titulo": "Juegos al azar",
+    "descripcion": "Genera valores aleatorios en tus programas.",
+    "tema": "Librerias",
+    "instrucciones": "Traducido, 'random' significa aleatorio. El programa no funciona aleatorio tal cual ya que te estara dando el mismo valor aunque se considere 'al azar', es por eso que tenemos que darle una semilla nueva: random.seed() nada más que cada semilla repetira el mismo valor.\n\nTu tarea: Sin cambiar la semilla. Usa random.randint(1, 10) para generar un número e imprímelo.",
+    "codigoInicial": "import random\nrandom.seed(42)\n\n# Genera el número aleatorio aquí\n",
+    "validacion": { "tipo": "salida_contiene", "valor": "2" }
+  },
+  {
+    "id": 38,
+    "titulo": "El año, el dia, la hora...",
+    "descripcion": "Trabaja con fechas y horas.",
+    "tema": "Librerias",
+    "instrucciones": "He aqui la libreria de la hora.\n\nTu tarea: Crea 'fecha = datetime.date(2024, 12, 25)' e imprime el día de la semana con fecha.strftime(\"%A\").",
+    "codigoInicial": "import datetime\n\n# Crea la fecha e imprime el día de la semana\n",
+    "validacion": { "tipo": "salida_contiene", "valor": "Wednesday" }
+  }
+]

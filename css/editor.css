@@ -1,0 +1,55 @@
+.editor-codigo-contenedor {
+  position: relative;
+  font-family: var(--fuente-mono);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  background: #100d0c;
+  border: 1px solid var(--negro-borde);
+  border-radius: var(--radio-borde);
+  overflow: hidden;
+}
+
+.editor-codigo-resaltado,
+.editor-codigo-textarea {
+  margin: 0;
+  padding: 1rem;
+  font: inherit;
+  line-height: inherit;
+  white-space: pre;
+  tab-size: 4;
+}
+
+.editor-codigo-resaltado {
+  position: absolute;
+  inset: 0;
+  overflow: auto;
+  color: var(--hueso);
+  pointer-events: none;
+}
+
+.editor-codigo-textarea {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  resize: none;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: transparent;
+  caret-color: var(--hueso);
+}
+
+.editor-codigo-textarea::selection {
+  background: rgba(200, 40, 63, 0.4);
+}
+
+/* Colores de sintaxis */
+.tok-clave      { color: #ff7fb0; font-weight: 600; }
+.tok-booleano   { color: #ff4d4d; font-weight: 600; }
+.tok-numero     { color: #61bd61; }
+.tok-cadena     { color: #974107; }
+.tok-comentario { color: var(--hueso-tenue); font-style: italic; }
+.tok-simbolo    { color: #be9c03; }
+.tok-funcion    { color: #eff8a0; }
+.tok-fstring    { color: #3d84f5; font-weight: 700; }

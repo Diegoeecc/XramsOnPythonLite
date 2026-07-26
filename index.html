@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pythonis — Aprende Python</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/animaciones.css">
+<link rel="stylesheet" href="css/decoraciones.css">
+<link rel="stylesheet" href="css/menu.css">
+<link rel="stylesheet" href="css/niveles.css">
+<link rel="stylesheet" href="css/sandbox.css">
+<link rel="stylesheet" href="css/editor.css">
+</head>
+<body>
+
+<svg id="lienzo-decoraciones" aria-hidden="true"></svg>
+
+<main id="app">
+
+  <!-- PANTALLA: INTRO -->
+  <section class="pantalla" data-pantalla="intro">
+    <img id="logo-intro" src="assets/imagenes/logo.png" alt="Pythonis">
+    <div id="logo-intro-alt">PYTHONIS</div>
+  </section>
+
+  <!-- PANTALLA: MENU -->
+  <!-- PANTALLA: MENU -->
+  <section class="pantalla" data-pantalla="menu">
+    <button id="boton-ajustes" class="boton-ajustes" data-orden="1" aria-label="Ajustes">☰</button>
+    <img class="logo-menu" src="assets/imagenes/logo.png" alt="Pythonis" data-orden="2">
+    <img class="titulo-menu" src="assets/imagenes/menuTitle.png" alt="Pythonis" data-orden="3">
+    <nav class="menu-principal">
+      <button class="boton-menu" data-accion="niveles" data-orden="4">Niveles</button>
+      <button class="boton-menu" data-accion="sandbox" data-orden="5">Sandbox</button>
+      <button class="boton-menu" data-accion="resetear" data-orden="6">Resetear</button>
+    </nav>
+  </section>
+
+<!-- PANTALLA: NIVELES -->
+  <section class="pantalla" data-pantalla="niveles">
+    <button class="boton-volver" data-volver="menu" data-orden="1">← Menú</button>
+
+    <div class="mapa-niveles" data-orden="2">
+      <button id="flecha-izquierda" class="flecha-nivel" aria-label="Nivel anterior">‹</button>
+
+      <div class="carrusel-niveles-viewport">
+        <div class="carrusel-niveles-pista" id="carrusel-pista">
+
+          <div class="tarjeta-nivel tarjeta-nivel--lateral">
+            <span class="tarjeta-nivel-numero"></span>
+            <div class="tarjeta-nivel-fila-superior">
+              <h2 class="tarjeta-nivel-titulo"></h2>
+              <div class="tarjeta-nivel-imagen"><img alt=""></div>
+            </div>
+            <p class="tarjeta-nivel-descripcion"></p>
+            <div class="tarjeta-nivel-pie">
+              <span class="tarjeta-nivel-tema"></span>
+              <button class="boton-menu boton-comenzar-nivel">Comenzar</button>
+            </div>
+          </div>
+
+          <div class="tarjeta-nivel">
+            <span class="tarjeta-nivel-numero"></span>
+            <div class="tarjeta-nivel-fila-superior">
+              <h2 class="tarjeta-nivel-titulo"></h2>
+              <div class="tarjeta-nivel-imagen"><img alt=""></div>
+            </div>
+            <p class="tarjeta-nivel-descripcion"></p>
+            <div class="tarjeta-nivel-pie">
+              <span class="tarjeta-nivel-tema"></span>
+              <button class="boton-menu boton-comenzar-nivel">Comenzar</button>
+            </div>
+          </div>
+
+          <div class="tarjeta-nivel tarjeta-nivel--lateral">
+            <span class="tarjeta-nivel-numero"></span>
+            <div class="tarjeta-nivel-fila-superior">
+              <h2 class="tarjeta-nivel-titulo"></h2>
+              <div class="tarjeta-nivel-imagen"><img alt=""></div>
+            </div>
+            <p class="tarjeta-nivel-descripcion"></p>
+            <div class="tarjeta-nivel-pie">
+              <span class="tarjeta-nivel-tema"></span>
+              <button class="boton-menu boton-comenzar-nivel">Comenzar</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <button id="flecha-derecha" class="flecha-nivel" aria-label="Nivel siguiente">›</button>
+    </div>
+
+    <form id="form-ir-a-nivel" class="ir-a-nivel" data-orden="3">
+      <label for="input-ir-a-nivel">Ir al nivel:</label>
+      <input type="number" id="input-ir-a-nivel" min="1" max="38" placeholder="1-38">
+      <button type="submit" class="boton-secundario">Ir</button>
+    </form>
+  </section>
+
+  <!-- PANTALLA: JUGAR NIVEL -->
+  <section class="pantalla" data-pantalla="jugar-nivel">
+    <button id="nivel-salir" class="boton-volver" data-orden="1">← Niveles</button>
+
+    <div class="nivel-layout" data-orden="2">
+      <aside class="nivel-instrucciones">
+        <span class="nivel-instrucciones-numero" id="nivel-instrucciones-numero"></span>
+        <h2 id="nivel-instrucciones-titulo"></h2>
+        <p id="nivel-instrucciones-texto"></p>
+      </aside>
+
+      <div class="nivel-editor-columna">
+        <div class="editor-codigo-contenedor nivel-editor">
+          <pre class="editor-codigo-resaltado"><code id="nivel-codigo-resaltado"></code></pre>
+          <textarea id="nivel-codigo" class="editor-codigo-textarea" spellcheck="false"></textarea>
+        </div>
+      </div>
+
+      <div class="nivel-visualizador-columna">
+        <div class="visualizador-tabs">
+          <div class="visualizador-tabs-izquierda">
+            <button class="nivel-tab activa" data-vista="consola">Consola</button>
+            <button class="nivel-tab" data-vista="resultado">Resultado</button>
+          </div>
+          <div class="visualizador-tabs-derecha">
+            <button id="nivel-ejecutar" class="boton-menu boton-pequeno">▶ Ejecutar</button>
+            <button id="nivel-detener" class="boton-secundario boton-pequeno" disabled>■ Detener</button>
+          </div>
+        </div>
+
+        <div class="nivel-vista activa" data-vista="consola">
+          <pre id="nivel-consola"></pre>
+          <button id="nivel-limpiar-consola" class="boton-secundario boton-pequeno boton-limpiar-consola" title="Borrar el texto de la consola">🗑 Limpiar consola</button>
+        </div>
+        <div class="nivel-vista" data-vista="resultado">
+          <canvas id="nivel-canvas" width="500" height="500"></canvas>
+        </div>
+      </div>
+
+    <div id="pantalla-victoria" class="pantalla-victoria oculto">
+      <div class="pantalla-victoria-contenido">
+        <button id="victoria-cerrar" class="pantalla-victoria-cerrar" aria-label="Cerrar">✕</button>
+        <h2>🎉 ¡Nivel completado!</h2>
+        <div class="pantalla-victoria-botones">
+          <button id="victoria-volver-niveles" class="boton-secundario">Volver a Niveles</button>
+          <button id="victoria-siguiente-nivel" class="boton-menu">Ir al siguiente nivel</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PANTALLA: SANDBOX -->
+  <section class="pantalla" data-pantalla="sandbox">
+    <button id="sandbox-salir" class="boton-volver" data-orden="1">← Salir</button>
+
+    <div class="sandbox-acciones-superior" data-orden="1">
+      <input type="file" id="sandbox-input-cargar" webkitdirectory multiple hidden>
+      <button id="sandbox-cargar" class="boton-secundario boton-pequeno">📂 Cargar</button>
+      <button id="sandbox-guardar" class="boton-secundario boton-pequeno">💾 Guardar</button>
+    </div>
+
+    <div class="sandbox-layout" data-orden="2">
+      <aside class="sandbox-explorador">
+        <div class="explorador-botones">
+          <button id="sandbox-nuevo-archivo" class="boton-secundario boton-pequeno" title="Crear archivo">📄+</button>
+          <button id="sandbox-nueva-carpeta" class="boton-secundario boton-pequeno" title="Crear carpeta">📁+</button>
+        </div>
+        <div id="sandbox-arbol" class="explorador-arbol"></div>
+      </aside>
+
+      <div class="sandbox-editor-columna">
+        <p class="sandbox-archivo-actual" id="sandbox-archivo-actual">main.py</p>
+        <div class="editor-codigo-contenedor sandbox-editor">
+          <pre class="editor-codigo-resaltado"><code id="sandbox-codigo-resaltado"></code></pre>
+          <textarea id="sandbox-codigo" class="editor-codigo-textarea" spellcheck="false"></textarea>
+        </div>
+      </div>
+
+      <div class="sandbox-visualizador-columna">
+        <div class="visualizador-tabs">
+          <div class="visualizador-tabs-izquierda">
+            <button class="sandbox-tab activa" data-vista="consola">Consola</button>
+            <button class="sandbox-tab" data-vista="resultado">Resultado</button>
+          </div>
+          <div class="visualizador-tabs-derecha">
+            <button id="sandbox-ejecutar" class="boton-menu boton-pequeno">▶ Ejecutar</button>
+            <button id="sandbox-detener" class="boton-secundario boton-pequeno" disabled>■ Detener</button>
+          </div>
+        </div>
+
+        <div class="sandbox-vista activa" data-vista="consola">
+          <pre id="sandbox-consola"></pre>
+          <button id="sandbox-limpiar-consola" class="boton-secundario boton-pequeno boton-limpiar-consola">🗑 Limpiar consola</button>
+        </div>
+        <div class="sandbox-vista" data-vista="resultado">
+          <canvas id="sandbox-canvas" width="500" height="500"></canvas>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Modal de confirmación genérico (lo usa "Resetear" y otros) -->
+<div id="modal-confirmacion" class="modal oculto">
+  <div class="modal-contenido">
+    <p id="modal-mensaje"></p>
+    <div class="modal-botones">
+      <button id="modal-cancelar" class="boton-secundario">Cancelar</button>
+      <button id="modal-confirmar" class="boton-peligro">Confirmar</button>
+    </div>
+  </div>
+</div>
+
+<div id="modal-ajustes" class="modal oculto">
+  <div class="modal-ajustes-contenido">
+    <button id="ajustes-cerrar" class="pantalla-victoria-cerrar" aria-label="Cerrar">✕</button>
+    <h2>Ajustes</h2>
+
+    <div class="ajustes-campo">
+      <label for="ajustes-input-codigo">Ingresar código:</label>
+      <div class="ajustes-campo-fila">
+        <input type="text" id="ajustes-input-codigo" placeholder="Escribe un código...">
+        <button id="ajustes-aplicar-codigo" class="boton-menu boton-pequeno">Aplicar</button>
+      </div>
+      <p id="ajustes-mensaje-codigo" class="ajustes-mensaje"></p>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
+
+<!-- python -m http.server 8000 -->
+<!-- http://localhost:8000 -->
