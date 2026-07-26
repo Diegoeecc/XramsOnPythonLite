@@ -1,4 +1,4 @@
-import { obtenerArbol, establecerArbol } from "./explorador.js";
+import { obtenerArbol, establecerArbol, crearNodoArchivo, crearNodoCarpeta } from "./explorador.js";
 
 export function inicializarCargarGuardar() {
   const inputCargar = document.getElementById("sandbox-input-cargar");
@@ -19,7 +19,7 @@ export function inicializarCargarGuardar() {
 }
 
 async function construirArbolDesdeArchivos(archivos) {
-  const raiz = { tipo: "carpeta", nombre: "", hijos: [] };
+  const raiz = crearNodoCarpeta("");
   for (const archivo of archivos) {
     const partes = archivo.webkitRelativePath.split("/").slice(1); // quita el nombre de la carpeta raíz elegida
     if (partes.length === 0) continue;
@@ -32,12 +32,12 @@ async function construirArbolDesdeArchivos(archivos) {
 function insertarEnArbol(nodo, partes, contenido) {
   const [actual, ...resto] = partes;
   if (resto.length === 0) {
-    nodo.hijos.push({ tipo: "archivo", nombre: actual, contenido });
+    nodo.hijos.push(crearNodoArchivo(actual, contenido));
     return;
   }
   let carpeta = nodo.hijos.find((h) => h.tipo === "carpeta" && h.nombre === actual);
   if (!carpeta) {
-    carpeta = { tipo: "carpeta", nombre: actual, hijos: [] };
+    carpeta = crearNodoCarpeta(actual);
     nodo.hijos.push(carpeta);
   }
   insertarEnArbol(carpeta, resto, contenido);

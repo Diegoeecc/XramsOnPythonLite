@@ -3,7 +3,11 @@ import { crearEditorCodigo } from "../editorCodigo.js";
 import { ejecutarCodigo, detenerEjecucion, establecerEscuchas, sincronizarArchivos } from "../pyodide/pyodideBridge.js";
 import { inicializarLienzoTortuga, procesarComandoTortuga } from "../pyodide/tortugaCanvas.js";
 import { traducirError } from "../errores.js";
-import { inicializarExplorador, reiniciarArbol, actualizarContenidoArchivoActivo, obtenerArbol } from "./explorador.js";
+import { pedirConfirmacion } from "../modal.js";
+import {
+  inicializarExplorador, reiniciarArbol, actualizarContenidoArchivoActivo,
+  obtenerArbol, establecerConfirmadorEliminacion,
+} from "./explorador.js";
 import { inicializarCargarGuardar } from "./cargarGuardar.js";
 
 let editor = null;
@@ -18,7 +22,7 @@ export function inicializarSandbox() {
       document.getElementById("sandbox-archivo-actual").textContent = nodo.nombre;
     },
   });
-
+  establecerConfirmadorEliminacion((mensaje, onConfirmar) => pedirConfirmacion({ mensaje, onConfirmar }));
   inicializarCargarGuardar();
 
   editor.textarea.addEventListener("input", () => {
@@ -37,8 +41,6 @@ export function inicializarSandbox() {
   document.getElementById("sandbox-salir").addEventListener("click", salir);
 }
 
-// Se llama cada vez que se ENTRA al Sandbox (desde el menú), no solo al arrancar la app:
-// reconecta el canvas y los escuchas del bridge, que Niveles también usa.
 export function mostrarSandbox() {
   inicializarLienzoTortuga(document.getElementById("sandbox-canvas"));
   establecerEscuchasSandbox();
@@ -77,7 +79,7 @@ function ejecutar() {
   document.getElementById("sandbox-detener").disabled = false;
 
   actualizarContenidoArchivoActivo(editor.obtenerCodigo());
-  sincronizarArchivos(obtenerArbol()); // así open()/import pueden ver los demás archivos del explorador
+  sincronizarArchivos(obtenerArbol());
   ejecutarCodigo(editor.obtenerCodigo());
 }
 

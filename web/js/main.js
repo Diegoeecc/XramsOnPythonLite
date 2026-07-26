@@ -28,4 +28,26 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   iniciarPyodide();
+  revisarActualizaciones();
 });
+
+async function revisarActualizaciones() {
+  if (!window.__TAURI__?.updater) {
+    console.log("Updater no disponible (normal si no estás dentro de la app empaquetada de Tauri).");
+    return;
+  }
+  try {
+    const { check } = window.__TAURI__.updater;
+    const { relaunch } = window.__TAURI__.process;
+    const actualizacion = await check();
+    if (actualizacion) {
+      const confirmar = confirm(`Hay una nueva versión (${actualizacion.version}) disponible. ¿Instalarla ahora?`);
+      if (confirmar) {
+        await actualizacion.downloadAndInstall();
+        await relaunch();
+      }
+    }
+  } catch (error) {
+    console.log("No se pudo revisar actualizaciones (normal si no estás dentro de la app empaquetada):", error);
+  }
+}
