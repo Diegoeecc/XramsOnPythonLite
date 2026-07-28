@@ -45,11 +45,20 @@ export function inicializarExplorador({ onSeleccionarArchivo }) {
 
   // Soltar sobre el área vacía del explorador (fuera de cualquier carpeta) regresa el archivo a la raíz.
   const contenedor = document.getElementById("sandbox-arbol");
-  contenedor.addEventListener("dragover", (evento) => evento.preventDefault());
+  contenedor.addEventListener("dragover", (evento) => {
+    evento.preventDefault();
+    evento.dataTransfer.dropEffect = "move";
+  });
   contenedor.addEventListener("drop", (evento) => {
     evento.preventDefault();
     moverNodo(evento.dataTransfer.getData("text/plain"), raiz);
   });
+
+  // Sin esto, el navegador muestra el cursor de "prohibido" en cualquier zona
+  // de la ventana que no haya declarado explícitamente que acepta el drop
+  // (por ejemplo, al pasar sobre el editor de código de camino a una carpeta).
+  document.addEventListener("dragover", (evento) => evento.preventDefault());
+  document.addEventListener("drop", (evento) => evento.preventDefault());
 }
 
 export function reiniciarArbol() {
@@ -190,6 +199,7 @@ function renderizarNodo(nodo, contenedor, profundidad) {
       fila.addEventListener("dragover", (evento) => {
         evento.preventDefault();
         evento.stopPropagation();
+        evento.dataTransfer.dropEffect = "move";
         fila.classList.add("explorador-carpeta--sobre-drop");
       });
       fila.addEventListener("dragleave", () => fila.classList.remove("explorador-carpeta--sobre-drop"));

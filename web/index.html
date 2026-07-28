@@ -18,6 +18,14 @@
 </head>
 <body>
 
+<div id="barra-titulo-personalizada" class="barra-titulo">
+  <span class="barra-titulo-nombre">XramsOnPython (XOP)</span>
+  <div class="barra-titulo-botones">
+    <button id="barra-titulo-minimizar" title="Minimizar">─</button>
+    <button id="barra-titulo-cerrar" title="Cerrar">✕</button>
+  </div>
+</div>
+
 <svg id="lienzo-decoraciones" aria-hidden="true"></svg>
 
 <main id="app">
@@ -29,19 +37,19 @@
   </section>
 
   <!-- PANTALLA: MENU -->
-  <!-- PANTALLA: MENU -->
   <section class="pantalla" data-pantalla="menu">
     <button id="boton-ajustes" class="boton-ajustes" data-orden="1" aria-label="Ajustes">☰</button>
     <img class="logo-menu" src="assets/imagenes/logo.png" alt="Pythonis" data-orden="2">
     <img class="titulo-menu" src="assets/imagenes/menuTitle.png" alt="Pythonis" data-orden="3">
     <nav class="menu-principal">
-      <button class="boton-menu" data-accion="niveles" data-orden="4">Niveles</button>
-      <button class="boton-menu" data-accion="sandbox" data-orden="5">Sandbox</button>
-      <button class="boton-menu" data-accion="resetear" data-orden="6">Resetear</button>
+      <button class="boton-menu" data-accion="niveles" data-orden="4">On Basic</button>
+      <button class="boton-menu" data-accion="" data-bloqueado="true" data-orden="5">On FRC🔒</button>
+      <button class="boton-menu" data-accion="sandbox" data-orden="6">Sandbox</button>
+      <button class="boton-menu" data-accion="resetear" data-orden="7">Resetear</button>
     </nav>
   </section>
 
-<!-- PANTALLA: NIVELES -->
+  <!-- PANTALLA: NIVELES -->
   <section class="pantalla" data-pantalla="niveles">
     <button class="boton-volver" data-volver="menu" data-orden="1">← Menú</button>
 
@@ -239,4 +247,4 @@
 </html>
 
 <!-- python -m http.server 8000 -->
-<!-- http://localhost:8000 -->
+<!-- http://localhost:8000/web -->

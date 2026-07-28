@@ -7,6 +7,7 @@ import { inicializarMapaNiveles, establecerAlComenzarNivel } from "./niveles/map
 import { inicializarPantallaNivel, iniciarNivel } from "./niveles/jugarNivel.js";
 import { inicializarSandbox } from "./sandbox/sandbox.js";
 import { inicializarAjustes } from "./ajustes.js";
+import { inicializarBarraTitulo } from "./barraTitulo.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   inicializarDecoraciones();
@@ -18,14 +19,11 @@ document.addEventListener("DOMContentLoaded", async () => {
   establecerAlComenzarNivel(iniciarNivel);
   inicializarSandbox();
   inicializarAjustes();
+  inicializarBarraTitulo();
 
   mostrarPantalla("intro");
 
-  reproducirIntro({
-    onTerminar: () => {
-      console.log("Intro terminada, mostrando menú");
-    }
-  });
+  reproducirIntro();
 
   iniciarPyodide();
   revisarActualizaciones();

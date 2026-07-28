@@ -1,0 +1,11 @@
+{
+  "version": "0.1.3",
+  "notes": "Primera versión pública de Pythonis.",
+  "pub_date": "2026-07-26T18:21:00Z",
+  "platforms": {
+    "windows-x86_64": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTNDZ1NVFKV2VpNTJVMDhCU0piYjltd2RzWXB0Y25OZnJPcDduK2lCUDEwRitaSWpjQkFDcGxtalBZUGVIVUxmVmNZVW9iR0xnRHVkWUJhR3I2dnVsSjBYYXBTUFVRSXc4PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg1MTY0NDIzCWZpbGU6WHJhbXNPblB5dGhvbl8wLjEuM194NjQtc2V0dXAuZXhlCi9XdDdiN2Zpc2hBYUxHSkxZNUtXWXVyYUZud2NaV1dZOThSeURKQytUWVkyZWx4cGh1SnpRSlljdldkWTFiUEZWcU5XalN4bS9Da25LZG5laHpqUUR3PT0K",
+      "url": "https://github.com/Diegoeecc/XramsOnPython/releases/download/v0.1.1/XramsOnPython_0.1.1_x64-setup.exe"
+    }
+  }
+}

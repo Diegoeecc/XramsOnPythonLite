@@ -130,4 +130,58 @@ html, body {
   font-size: 1rem;
 }
 
+.barra-titulo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: var(--negro-panel);
+  border-bottom: 1px solid var(--negro-borde);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.75rem;
+  transform: translateY(-100%);
+  transition: transform 200ms ease;
+  z-index: 1000;
+}
+
+.barra-titulo.visible {
+  transform: translateY(0);
+}
+
+.barra-titulo-nombre {
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.85rem;
+  color: var(--hueso-tenue);
+}
+
+.barra-titulo-botones {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.barra-titulo-botones button {
+  width: 32px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  color: var(--hueso-tenue);
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  transition: background 150ms ease, color 150ms ease;
+}
+
+.barra-titulo-botones button:hover {
+  background: rgba(139, 30, 47, 0.25);
+  color: var(--hueso);
+}
+
+#barra-titulo-cerrar:hover {
+  background: var(--carmesi);
+  color: white;
+}
+
 .oculto { display: none !important; }

@@ -28,14 +28,20 @@ export function inicializarAjustes() {
     const valor = input.value.trim();
     if (!valor) return;
 
-    const esValido = CODIGOS_DESBLOQUEO.some(
-      (codigo) => codigo.toLowerCase() === valor.toLowerCase()
-    );
+    function sacaDeDondeEsElCodigo(){
+      if (CODIGOS_DESBLOQUEO.some((codigo) => codigo.toLowerCase() === valor.toLowerCase()) == true){
+        return "Niveles 'Basico' desbloqueados: 38"
+      }
 
-    if (esValido) {
+      return "Error"
+    }
+
+    let textoRespuesta = sacaDeDondeEsElCodigo()
+
+    if (textoRespuesta != "Error") {
       desbloquearTodosLosNiveles(obtenerNiveles().length);
       refrescarMapaNiveles();
-      mensaje.textContent = "¡Código correcto! Todos los niveles desbloqueados.";
+      mensaje.textContent = textoRespuesta;
       mensaje.className = "ajustes-mensaje exito";
     } else {
       mensaje.textContent = "Código no válido.";

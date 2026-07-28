@@ -32,7 +32,7 @@
     "descripcion": "Descubre los valores True y False y cómo representan verdad o falsedad.",
     "tema": "Variables",
     "instrucciones": "Los booleanos son el tipo de variable más facil de entender, un simple si o no.\n\nTu tarea: Crea una variable booleana 'ejemplo' que sea true e imprimela",
-    "codigoInicial": "edad = 20\n\n# Crea puede_votar aquí\n",
+    "codigoInicial": "# Crea ejemplo aqui\n",
     "validacion": { "tipo": "variable", "nombre": "ejemplo", "valor": true }
   },
   {
@@ -338,11 +338,11 @@
   },
   {
     "id": 38,
-    "titulo": "El año, el dia, la hora...",
-    "descripcion": "Trabaja con fechas y horas.",
+    "titulo": "Todo a su debido tiempo",
+    "descripcion": "Trabaja con la libreria time",
     "tema": "Librerias",
-    "instrucciones": "He aqui la libreria de la hora.\n\nTu tarea: Crea 'fecha = datetime.date(2024, 12, 25)' e imprime el día de la semana con fecha.strftime(\"%A\").",
-    "codigoInicial": "import datetime\n\n# Crea la fecha e imprime el día de la semana\n",
-    "validacion": { "tipo": "salida_contiene", "valor": "Wednesday" }
+    "instrucciones": "Calmado y despacio. La libreria 'time' te incluye sleep para poder hacer delays entre tu codigo.\n\nTu tarea: Crea un bucle que repita 7 veces la palabra 'Otravez', entre cada repetición añade time.sleep(1) y veras como dura 7 segundos en acabar.",
+    "codigoInicial": "import time\n\n# Crea tu bucle aqui\n",
+    "validacion": { "tipo": "salida_contiene", "valor": "Otravez" }
   }
 ]
