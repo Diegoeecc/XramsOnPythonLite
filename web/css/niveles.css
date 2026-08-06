@@ -230,9 +230,10 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  min-height: 0;
 }
 
-.nivel-editor { flex: 1; }
+.nivel-editor { flex: 1; min-height: 0; }
 
 .visualizador-tabs {
   display: flex;
@@ -356,4 +357,109 @@
 .pantalla-victoria-cerrar:hover {
   color: var(--hueso);
   border-color: var(--carmesi);
+}
+
+.nivel-frc-layout {
+  display: grid;
+  grid-template-columns: 220px 1fr 1fr;
+  gap: 1.5rem;
+  width: 94vw;
+  height: 78vh;
+}
+
+.nivel-frc-editor-columna, .nivel-frc-visualizador-columna {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
+
+.nivel-frc-editor { flex: 1; min-height: 0; }
+
+.nivel-frc-tab {
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px 8px 0 0;
+  border: 1px solid var(--negro-borde);
+  border-bottom: none;
+  background: transparent;
+  color: var(--hueso-tenue);
+  cursor: pointer;
+  font-family: var(--fuente-cuerpo);
+}
+
+.nivel-frc-tab.activa {
+  background: var(--negro-panel);
+  color: var(--hueso);
+  border-color: var(--carmesi);
+}
+
+.nivel-frc-vista {
+  display: none;
+  flex: 1;
+  min-height: 0;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.nivel-frc-vista.activa { display: flex; }
+
+.nivel-frc-instrucciones-texto {
+  flex: 1;
+  overflow-y: auto;
+  background: var(--negro-panel);
+  border: 1px solid var(--negro-borde);
+  border-radius: var(--radio-borde);
+  padding: 1.5rem;
+  color: var(--hueso-tenue);
+  line-height: 1.6;
+  font-size: 0.95rem;
+  white-space: pre-line;
+  text-align: left;
+}
+
+#nivel-frc-consola {
+  flex: 1;
+  margin: 0;
+  padding: 1rem;
+  background: #100d0c;
+  border-radius: var(--radio-borde);
+  overflow: auto;
+  font-family: var(--fuente-mono);
+  font-size: 0.9rem;
+  color: var(--hueso);
+  white-space: pre-wrap;
+}
+
+.nivel-frc-arena-placeholder {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--negro-panel);
+  border: 1px dashed var(--negro-borde);
+  border-radius: var(--radio-borde);
+}
+
+.frc-panel-prueba {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  width: min(520px, 80vw);
+  text-align: left;
+}
+
+.frc-panel-prueba label {
+  color: var(--hueso-tenue);
+  font-size: 0.85rem;
+}
+
+.frc-panel-prueba textarea {
+  font-family: var(--fuente-mono);
+  font-size: 0.85rem;
+  background: #100d0c;
+  color: var(--hueso);
+  border: 1px solid var(--negro-borde);
+  border-radius: 8px;
+  padding: 0.75rem;
 }

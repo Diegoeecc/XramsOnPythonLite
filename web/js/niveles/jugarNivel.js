@@ -5,6 +5,7 @@ import { ejecutarCodigo, detenerEjecucion, establecerEscuchas, solicitarValidaci
 import { inicializarLienzoTortuga, procesarComandoTortuga } from "../pyodide/tortugaCanvas.js";
 import { crearEditorCodigo } from "../editorCodigo.js";
 import { mostrarMapaNiveles, irANivelEspecifico } from "./mapaNiveles.js";
+import { actualizarEstadoBotonFrc } from "../menu/menu.js";
 import { traducirError } from "../errores.js";
 
 const RETRASO_VICTORIA_MS = 2000;
@@ -141,6 +142,12 @@ function programarVictoria() {
   temporizadorVictoria = setTimeout(() => {
     temporizadorVictoria = null;
     marcarNivelCompletado(nivelActual.id);
+
+    actualizarEstadoBotonFrc(); // por si este era el último nivel del básico
+
+    const esUltimoNivel = nivelActual.id === obtenerNiveles().length;
+    document.getElementById("victoria-siguiente-nivel").style.display = esUltimoNivel ? "none" : "";
+
     document.getElementById("pantalla-victoria").classList.remove("oculto");
   }, RETRASO_VICTORIA_MS);
 }

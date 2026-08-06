@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="css/niveles.css">
 <link rel="stylesheet" href="css/sandbox.css">
 <link rel="stylesheet" href="css/editor.css">
+<link rel="stylesheet" href="css/frc.css">
 </head>
 <body>
 
@@ -43,7 +44,7 @@
     <img class="titulo-menu" src="assets/imagenes/menuTitle.png" alt="Pythonis" data-orden="3">
     <nav class="menu-principal">
       <button class="boton-menu" data-accion="niveles" data-orden="4">On Basic</button>
-      <button class="boton-menu" data-accion="" data-bloqueado="true" data-orden="5">On FRC🔒</button>
+      <button class="boton-menu" data-accion="on-frc" data-bloqueado="true" data-orden="5">On FRC</button>
       <button class="boton-menu" data-accion="sandbox" data-orden="6">Sandbox</button>
       <button class="boton-menu" data-accion="resetear" data-orden="7">Resetear</button>
     </nav>
@@ -124,8 +125,11 @@
 
       <div class="nivel-editor-columna">
         <div class="editor-codigo-contenedor nivel-editor">
-          <pre class="editor-codigo-resaltado"><code id="nivel-codigo-resaltado"></code></pre>
-          <textarea id="nivel-codigo" class="editor-codigo-textarea" spellcheck="false"></textarea>
+          <div class="editor-numeros-linea" id="nivel-codigo-numeros"></div>
+          <div class="editor-codigo-area">
+            <pre class="editor-codigo-resaltado"><code id="nivel-codigo-resaltado"></code></pre>
+            <textarea id="nivel-codigo" class="editor-codigo-textarea" spellcheck="false"></textarea>
+          </div>
         </div>
       </div>
 
@@ -184,8 +188,11 @@
       <div class="sandbox-editor-columna">
         <p class="sandbox-archivo-actual" id="sandbox-archivo-actual">main.py</p>
         <div class="editor-codigo-contenedor sandbox-editor">
-          <pre class="editor-codigo-resaltado"><code id="sandbox-codigo-resaltado"></code></pre>
-          <textarea id="sandbox-codigo" class="editor-codigo-textarea" spellcheck="false"></textarea>
+          <div class="editor-numeros-linea" id="sandbox-codigo-numeros"></div>
+          <div class="editor-codigo-area">
+            <pre class="editor-codigo-resaltado"><code id="sandbox-codigo-resaltado"></code></pre>
+            <textarea id="sandbox-codigo" class="editor-codigo-textarea" spellcheck="false"></textarea>
+          </div>
         </div>
       </div>
 
@@ -193,7 +200,8 @@
         <div class="visualizador-tabs">
           <div class="visualizador-tabs-izquierda">
             <button class="sandbox-tab activa" data-vista="consola">Consola</button>
-            <button class="sandbox-tab" data-vista="resultado">Resultado</button>
+            <button class="sandbox-tab" data-vista="tortuga">Tortuga</button>
+            <button class="sandbox-tab" data-vista="arena">Arena</button>
           </div>
           <div class="visualizador-tabs-derecha">
             <button id="sandbox-ejecutar" class="boton-menu boton-pequeno">▶ Ejecutar</button>
@@ -205,8 +213,153 @@
           <pre id="sandbox-consola"></pre>
           <button id="sandbox-limpiar-consola" class="boton-secundario boton-pequeno boton-limpiar-consola">🗑 Limpiar consola</button>
         </div>
-        <div class="sandbox-vista" data-vista="resultado">
+        <div class="sandbox-vista" data-vista="tortuga">
           <canvas id="sandbox-canvas" width="500" height="500"></canvas>
+        </div>
+        <div class="sandbox-vista" data-vista="arena">
+          <div class="frc-simulador">
+            <div class="frc-arena-contenedor">
+              <div id="sandbox-arena" class="frc-arena">
+                <svg class="frc-enlaces-svg"><defs></defs></svg>
+                <button id="sandbox-arena-cancelar-enlace" class="frc-cancelar-enlace oculto" title="Cancelar enlace">✕</button>
+              </div>
+              <p id="sandbox-arena-mensaje" class="ajustes-mensaje"></p>
+            </div>
+            <div class="frc-paleta" id="sandbox-arena-paleta"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PANTALLA: ON FRC — mapa de niveles avanzados -->
+  <section class="pantalla" data-pantalla="on-frc">
+    <button class="boton-volver" data-volver="menu" data-orden="1">← Menú</button>
+
+    <div class="mapa-niveles" data-orden="2">
+      <button id="flecha-izquierda-frc" class="flecha-nivel" aria-label="Nivel anterior">‹</button>
+
+      <div class="carrusel-niveles-viewport">
+        <div class="carrusel-niveles-pista" id="carrusel-pista-frc">
+
+          <div class="tarjeta-nivel tarjeta-nivel--lateral">
+            <span class="tarjeta-nivel-numero"></span>
+            <div class="tarjeta-nivel-fila-superior">
+              <h2 class="tarjeta-nivel-titulo"></h2>
+              <div class="tarjeta-nivel-imagen"><img alt=""></div>
+            </div>
+            <p class="tarjeta-nivel-descripcion"></p>
+            <div class="tarjeta-nivel-pie">
+              <span class="tarjeta-nivel-tema"></span>
+              <button class="boton-menu boton-comenzar-nivel">Comenzar</button>
+            </div>
+          </div>
+
+          <div class="tarjeta-nivel">
+            <span class="tarjeta-nivel-numero"></span>
+            <div class="tarjeta-nivel-fila-superior">
+              <h2 class="tarjeta-nivel-titulo"></h2>
+              <div class="tarjeta-nivel-imagen"><img alt=""></div>
+            </div>
+            <p class="tarjeta-nivel-descripcion"></p>
+            <div class="tarjeta-nivel-pie">
+              <span class="tarjeta-nivel-tema"></span>
+              <button class="boton-menu boton-comenzar-nivel">Comenzar</button>
+            </div>
+          </div>
+
+          <div class="tarjeta-nivel tarjeta-nivel--lateral">
+            <span class="tarjeta-nivel-numero"></span>
+            <div class="tarjeta-nivel-fila-superior">
+              <h2 class="tarjeta-nivel-titulo"></h2>
+              <div class="tarjeta-nivel-imagen"><img alt=""></div>
+            </div>
+            <p class="tarjeta-nivel-descripcion"></p>
+            <div class="tarjeta-nivel-pie">
+              <span class="tarjeta-nivel-tema"></span>
+              <button class="boton-menu boton-comenzar-nivel">Comenzar</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <button id="flecha-derecha-frc" class="flecha-nivel" aria-label="Nivel siguiente">›</button>
+    </div>
+
+    <form id="form-ir-a-nivel-frc" class="ir-a-nivel" data-orden="3">
+      <label for="input-ir-a-nivel-frc">Ir al nivel:</label>
+      <input type="number" id="input-ir-a-nivel-frc" min="1" placeholder="#">
+      <button type="submit" class="boton-secundario">Ir</button>
+    </form>
+  </section>
+
+  <!-- PANTALLA: JUGAR NIVEL FRC -->
+  <section class="pantalla" data-pantalla="jugar-nivel-frc">
+    <button id="nivel-frc-salir" class="boton-volver" data-orden="1">← Niveles</button>
+
+    <div class="nivel-frc-layout" data-orden="2">
+      <aside class="sandbox-explorador nivel-frc-explorador">
+        <div class="explorador-botones">
+          <button id="nivel-frc-nuevo-archivo" class="boton-secundario boton-pequeno" title="Crear archivo">📄+</button>
+          <button id="nivel-frc-nueva-carpeta" class="boton-secundario boton-pequeno" title="Crear carpeta">📁+</button>
+        </div>
+        <div id="nivel-frc-arbol" class="explorador-arbol"></div>
+      </aside>
+
+      <div class="nivel-frc-editor-columna">
+        <p class="sandbox-archivo-actual" id="nivel-frc-archivo-actual">main.py</p>
+        <div class="editor-codigo-contenedor nivel-frc-editor">
+          <div class="editor-numeros-linea" id="nivel-frc-codigo-numeros"></div>
+          <div class="editor-codigo-area">
+            <pre class="editor-codigo-resaltado"><code id="nivel-frc-codigo-resaltado"></code></pre>
+            <textarea id="nivel-frc-codigo" class="editor-codigo-textarea" spellcheck="false"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="nivel-frc-visualizador-columna">
+        <div class="visualizador-tabs">
+          <div class="visualizador-tabs-izquierda">
+            <button class="nivel-frc-tab activa" data-vista="instrucciones">Instrucciones</button>
+            <button class="nivel-frc-tab" data-vista="consola">Consola</button>
+            <button class="nivel-frc-tab" data-vista="resultado">Resultado</button>
+          </div>
+          <div class="visualizador-tabs-derecha">
+            <button id="nivel-frc-ejecutar" class="boton-menu boton-pequeno">▶ Ejecutar</button>
+            <button id="nivel-frc-detener" class="boton-secundario boton-pequeno" disabled>■ Detener</button>
+          </div>
+        </div>
+
+        <div class="nivel-frc-vista activa" data-vista="instrucciones">
+          <div class="nivel-frc-instrucciones-texto" id="nivel-frc-instrucciones-texto"></div>
+        </div>
+        <div class="nivel-frc-vista" data-vista="consola">
+          <pre id="nivel-frc-consola"></pre>
+          <button id="nivel-frc-limpiar-consola" class="boton-secundario boton-pequeno boton-limpiar-consola">🗑 Limpiar consola</button>
+        </div>
+        <div class="nivel-frc-vista" data-vista="resultado">
+          <div class="frc-simulador">
+            <div class="frc-arena-contenedor">
+              <div id="frc-arena" class="frc-arena">
+                <svg class="frc-enlaces-svg"><defs id="frc-enlaces-defs"></defs></svg>
+                <button id="frc-cancelar-enlace" class="frc-cancelar-enlace oculto" title="Cancelar enlace">✕</button>
+              </div>
+              <p id="frc-mensaje" class="ajustes-mensaje"></p>
+            </div>
+            <div class="frc-paleta" id="frc-paleta"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="pantalla-victoria-frc" class="pantalla-victoria oculto">
+      <div class="pantalla-victoria-contenido">
+        <button id="victoria-frc-cerrar" class="pantalla-victoria-cerrar" aria-label="Cerrar">✕</button>
+        <h2>🎉 ¡Nivel completado!</h2>
+        <div class="pantalla-victoria-botones">
+          <button id="victoria-frc-volver-niveles" class="boton-secundario">Volver a Niveles</button>
+          <button id="victoria-frc-siguiente-nivel" class="boton-menu">Ir al siguiente nivel</button>
         </div>
       </div>
     </div>

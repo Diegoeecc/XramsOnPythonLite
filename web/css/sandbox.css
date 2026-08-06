@@ -82,6 +82,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  min-height: 0;
 }
 
 .sandbox-archivo-actual {
@@ -91,7 +92,7 @@
   margin-bottom: 0.5rem;
 }
 
-.sandbox-editor { flex: 1; }
+.sandbox-editor { flex: 1; min-height: 0; }
 
 .sandbox-tab {
   padding: 0.5rem 1.2rem;

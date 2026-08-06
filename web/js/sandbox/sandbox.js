@@ -2,31 +2,34 @@ import { mostrarPantalla } from "../pantallas.js";
 import { crearEditorCodigo } from "../editorCodigo.js";
 import { ejecutarCodigo, detenerEjecucion, establecerEscuchas, sincronizarArchivos } from "../pyodide/pyodideBridge.js";
 import { inicializarLienzoTortuga, procesarComandoTortuga } from "../pyodide/tortugaCanvas.js";
+import { activarArenaEn, resincronizarArena, limpiarEstadosMotores, apagarTodosLosLeds } from "../frc/arena.js";
 import { traducirError } from "../errores.js";
 import { pedirConfirmacion } from "../modal.js";
-import {
-  inicializarExplorador, reiniciarArbol, actualizarContenidoArchivoActivo,
-  obtenerArbol, establecerConfirmadorEliminacion,
-} from "./explorador.js";
+import { crearExplorador } from "./explorador.js";
 import { inicializarCargarGuardar } from "./cargarGuardar.js";
 
 let editor = null;
+let explorador = null;
 let ejecutando = false;
 
 export function inicializarSandbox() {
   editor = crearEditorCodigo("sandbox-codigo");
 
-  inicializarExplorador({
+  explorador = crearExplorador({
+    contenedorId: "sandbox-arbol",
+    botonNuevoArchivoId: "sandbox-nuevo-archivo",
+    botonNuevaCarpetaId: "sandbox-nueva-carpeta",
     onSeleccionarArchivo: (nodo) => {
       editor.establecerCodigo(nodo.contenido || "");
       document.getElementById("sandbox-archivo-actual").textContent = nodo.nombre;
     },
+    alSolicitarConfirmacion: (mensaje, onConfirmar) => pedirConfirmacion({ mensaje, onConfirmar }),
   });
-  establecerConfirmadorEliminacion((mensaje, onConfirmar) => pedirConfirmacion({ mensaje, onConfirmar }));
-  inicializarCargarGuardar();
+
+  inicializarCargarGuardar(explorador);
 
   editor.textarea.addEventListener("input", () => {
-    actualizarContenidoArchivoActivo(editor.obtenerCodigo());
+    explorador.actualizarContenidoArchivoActivo(editor.obtenerCodigo());
   });
 
   document.querySelectorAll(".sandbox-tab").forEach((boton) => {
@@ -43,6 +46,12 @@ export function inicializarSandbox() {
 
 export function mostrarSandbox() {
   inicializarLienzoTortuga(document.getElementById("sandbox-canvas"));
+  activarArenaEn({
+    arenaId: "sandbox-arena",
+    paletaId: "sandbox-arena-paleta",
+    mensajeId: "sandbox-arena-mensaje",
+    cancelarEnlaceId: "sandbox-arena-cancelar-enlace",
+  });
   establecerEscuchasSandbox();
   mostrarPantalla("sandbox");
 }
@@ -59,12 +68,20 @@ function mostrarVista(nombre) {
 function establecerEscuchasSandbox() {
   establecerEscuchas({
     salida: (d) => { document.getElementById("sandbox-consola").textContent += d.texto; },
-    error: (d) => { document.getElementById("sandbox-consola").textContent += "\n" + traducirError(d.texto) + "\n"; },
+    error: (d) => {
+      const huboVarios = explorador.contarArchivos() > 1;
+      document.getElementById("sandbox-consola").textContent += "\n" + traducirError(d.texto, huboVarios) + "\n";
+    },
     tortuga: (d) => procesarComandoTortuga(d.comando),
-    fin: () => {
+    fin: (d) => {
+      // Igual que en los niveles de FRC: si queda un motor girando o un LED prendido,
+      // el "programa" sigue corriendo en la práctica — solo "Detener" lo apaga.
+      if (d.ledActivo || d.motorActivo) return;
       ejecutando = false;
       document.getElementById("sandbox-ejecutar").disabled = false;
       document.getElementById("sandbox-detener").disabled = true;
+      limpiarEstadosMotores();
+      apagarTodosLosLeds();
     },
     estado: () => {},
     validacion: () => {},
@@ -78,13 +95,16 @@ function ejecutar() {
   document.getElementById("sandbox-ejecutar").disabled = true;
   document.getElementById("sandbox-detener").disabled = false;
 
-  actualizarContenidoArchivoActivo(editor.obtenerCodigo());
-  sincronizarArchivos(obtenerArbol());
+  explorador.actualizarContenidoArchivoActivo(editor.obtenerCodigo());
+  sincronizarArchivos(explorador.obtenerArbol());
+  resincronizarArena();
   ejecutarCodigo(editor.obtenerCodigo());
 }
 
 function detener() {
   detenerEjecucion();
+  limpiarEstadosMotores();
+  apagarTodosLosLeds();
   ejecutando = false;
   document.getElementById("sandbox-ejecutar").disabled = false;
   document.getElementById("sandbox-detener").disabled = true;
@@ -93,7 +113,9 @@ function detener() {
 
 function salir() {
   detenerEjecucion();
-  reiniciarArbol();
+  limpiarEstadosMotores();
+  apagarTodosLosLeds();
+  explorador.reiniciarArbol();
   document.getElementById("sandbox-consola").textContent = "";
   mostrarPantalla("menu");
 }

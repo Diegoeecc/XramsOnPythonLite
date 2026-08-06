@@ -5,8 +5,13 @@ const PALABRAS_CLAVE = new Set([
   "if", "elif", "else", "def", "while", "for", "and", "or", "not", "in", "is",
   "return", "class", "import", "from", "as", "try", "except", "finally",
   "with", "lambda", "pass", "break", "continue", "global", "nonlocal",
-  "yield", "raise", "del", "assert", "async", "await", "None",
+  "yield", "raise", "del", "assert", "async", "await", "None"
 ]);
+
+const PALABRAS_CLAVE_ESPECIALES = new Set([
+  "self",
+]);
+
 const BOOLEANOS = new Set(["True", "False"]);
 
 // Grupos: 1) comentario  2) f-string  3) cadena normal  4) número  5) palabra  6) símbolo
@@ -67,6 +72,8 @@ function resaltarCodigoPython(codigo) {
         resultado += `<span class="tok-booleano">${palabra}</span>`;
       } else if (PALABRAS_CLAVE.has(palabra)) {
         resultado += `<span class="tok-clave">${palabra}</span>`;
+      } else if (PALABRAS_CLAVE_ESPECIALES.has(palabra)) {
+        resultado += `<span class="tok-clave-especial">${palabra}</span>`;
       } else if (siguienteCaracterNoEspacio(codigo, coincidencia.index + palabra.length) === "(") {
         resultado += `<span class="tok-funcion">${palabra}</span>`;
       } else {
@@ -154,19 +161,30 @@ function manejarTeclaEditor(evento, textarea, alCambiar) {
   if (inicio !== textarea.selectionStart) alCambiar();
 }
 
+function actualizarNumerosLinea(textarea, contenedorNumeros) {
+  const totalLineas = textarea.value.split("\n").length;
+  let html = "";
+  for (let i = 1; i <= totalLineas; i++) html += `<span>${i}</span>`;
+  contenedorNumeros.innerHTML = html;
+}
+
 export function crearEditorCodigo(idTextarea) {
   const textarea = document.getElementById(idTextarea);
-  const codigo = document.getElementById(idTextarea + "-resaltado");
+  const codigo = document.getElementById(idTextarea + "-resaltado"); // <code>: aquí va el texto
+  const contenedorScroll = codigo.parentElement;                      // <pre>: aquí sí vive el overflow:auto real
+  const numerosLinea = document.getElementById(idTextarea + "-numeros");
 
   function refrescar() {
     codigo.innerHTML = resaltarCodigoPython(textarea.value);
+    if (numerosLinea) actualizarNumerosLinea(textarea, numerosLinea);
   }
 
   textarea.addEventListener("input", refrescar);
   textarea.addEventListener("keydown", (evento) => manejarTeclaEditor(evento, textarea, refrescar));
   textarea.addEventListener("scroll", () => {
-    codigo.parentElement.scrollTop = textarea.scrollTop;
-    codigo.parentElement.scrollLeft = textarea.scrollLeft;
+    contenedorScroll.scrollTop = textarea.scrollTop;
+    contenedorScroll.scrollLeft = textarea.scrollLeft;
+    if (numerosLinea) numerosLinea.scrollTop = textarea.scrollTop;
   });
 
   refrescar();

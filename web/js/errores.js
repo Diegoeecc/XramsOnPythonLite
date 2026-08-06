@@ -49,7 +49,18 @@ const PATRONES_ERROR = [
   },
 ];
 
-export function traducirError(textoError) {
+// Extrae el nombre de archivo de la última línea "File ..." del traceback (la más
+// cercana a donde realmente truena). Si es el script principal, Pyodide lo llama
+// "<exec>" — en ese caso no mostramos nombre de archivo, no aporta nada al alumno.
+function extraerNombreArchivo(textoError) {
+  const coincidencias = [...textoError.matchAll(/File "([^"]+)", line \d+/g)];
+  if (coincidencias.length === 0) return null;
+  const rutaCompleta = coincidencias[coincidencias.length - 1][1];
+  if (rutaCompleta === "<exec>") return null;
+  return rutaCompleta.split("/").pop();
+}
+
+export function traducirError(textoError, huboVariosArchivos) {
   const lineas = textoError.trim().split("\n");
   const ultimaLinea = lineas[lineas.length - 1];
 
@@ -59,12 +70,15 @@ export function traducirError(textoError) {
     numeroLinea = coincidenciasLinea[coincidenciasLinea.length - 1][1];
   }
 
+  const nombreArchivo = extraerNombreArchivo(textoError);
+  const prefijoArchivo = huboVariosArchivos && nombreArchivo ? `Archivo "${nombreArchivo}", ` : "";
+
   for (const patron of PATRONES_ERROR) {
     if (ultimaLinea.startsWith(patron.tipo)) {
       const coincidencia = ultimaLinea.match(patron.regex);
-      if (coincidencia) return patron.mensaje(coincidencia, numeroLinea);
+      if (coincidencia) return prefijoArchivo + patron.mensaje(coincidencia, numeroLinea);
     }
   }
 
-  return `Error en la línea ${numeroLinea}: ${ultimaLinea}`;
+  return `${prefijoArchivo}Error en la línea ${numeroLinea}: ${ultimaLinea}`;
 }

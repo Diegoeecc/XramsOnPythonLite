@@ -1,6 +1,6 @@
-import { obtenerArbol, establecerArbol, crearNodoArchivo, crearNodoCarpeta } from "./explorador.js";
+import { crearNodoArchivo, crearNodoCarpeta } from "./explorador.js";
 
-export function inicializarCargarGuardar() {
+export function inicializarCargarGuardar(explorador) {
   const inputCargar = document.getElementById("sandbox-input-cargar");
 
   document.getElementById("sandbox-cargar").addEventListener("click", () => {
@@ -12,16 +12,16 @@ export function inicializarCargarGuardar() {
     const archivos = Array.from(evento.target.files);
     if (archivos.length === 0) return;
     const arbol = await construirArbolDesdeArchivos(archivos);
-    establecerArbol(arbol);
+    explorador.establecerArbol(arbol);
   });
 
-  document.getElementById("sandbox-guardar").addEventListener("click", guardarComoZip);
+  document.getElementById("sandbox-guardar").addEventListener("click", () => guardarComoZip(explorador));
 }
 
 async function construirArbolDesdeArchivos(archivos) {
   const raiz = crearNodoCarpeta("");
   for (const archivo of archivos) {
-    const partes = archivo.webkitRelativePath.split("/").slice(1); // quita el nombre de la carpeta raíz elegida
+    const partes = archivo.webkitRelativePath.split("/").slice(1);
     if (partes.length === 0) continue;
     const contenido = await archivo.text();
     insertarEnArbol(raiz, partes, contenido);
@@ -43,12 +43,12 @@ function insertarEnArbol(nodo, partes, contenido) {
   insertarEnArbol(carpeta, resto, contenido);
 }
 
-async function guardarComoZip() {
+async function guardarComoZip(explorador) {
   const nombre = prompt("¿Cómo quieres llamar al archivo descargado? (sin .zip)", "mi_proyecto");
   if (!nombre) return;
 
   const zip = new JSZip();
-  agregarNodoAZip(zip, obtenerArbol());
+  agregarNodoAZip(zip, explorador.obtenerArbol());
 
   const contenidoZip = await zip.generateAsync({ type: "blob" });
   const url = URL.createObjectURL(contenidoZip);

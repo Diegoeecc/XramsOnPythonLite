@@ -1,5 +1,8 @@
 .editor-codigo-contenedor {
   position: relative;
+  display: flex;
+  height: 100%;
+  min-height: 0;
   font-family: var(--fuente-mono);
   font-size: 0.95rem;
   line-height: 1.5;
@@ -7,6 +10,31 @@
   border: 1px solid var(--negro-borde);
   border-radius: var(--radio-borde);
   overflow: hidden;
+}
+
+.editor-numeros-linea {
+  flex-shrink: 0;
+  width: var(--ancho-numeros-linea);
+  height: 100%;
+  padding: 1rem 0;
+  overflow: hidden;
+  text-align: right;
+  color: var(--hueso-tenue);
+  background: rgba(255, 255, 255, 0.03);
+  border-right: 1px solid var(--negro-borde);
+  user-select: none;
+}
+
+.editor-numeros-linea span {
+  display: block;
+  padding-right: 0.4rem;
+}
+
+.editor-codigo-area {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  height: 100%;
 }
 
 .editor-codigo-resaltado,
@@ -27,6 +55,10 @@
   pointer-events: none;
 }
 
+.editor-codigo-resaltado::-webkit-scrollbar {
+  display: none; /* el scroll real lo maneja el textarea; esta capa solo lo refleja */
+}
+
 .editor-codigo-textarea {
   position: absolute;
   inset: 0;
@@ -38,6 +70,7 @@
   background: transparent;
   color: transparent;
   caret-color: var(--hueso);
+  overflow: auto;
 }
 
 .editor-codigo-textarea::selection {
@@ -52,4 +85,5 @@
 .tok-comentario { color: var(--hueso-tenue); font-style: italic; }
 .tok-simbolo    { color: #be9c03; }
 .tok-funcion    { color: #eff8a0; }
-.tok-fstring    { color: #3d84f5; font-weight: 700; }
+.tok-fstring       { color: #3d84f5; font-weight: 700; }
+.tok-clave-especial { color: #8ec7ff; }

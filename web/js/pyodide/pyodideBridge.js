@@ -1,5 +1,5 @@
 let worker = null;
-let escuchas = { salida: null, fin: null, estado: null, tortuga: null, validacion: null, error: null };
+let escuchas = { salida: null, fin: null, estado: null, tortuga: null, validacion: null, error: null, ledFrc: null, motorFrc: null };
 
 function adjuntarWorker() {
   worker.onmessage = (evento) => {
@@ -10,6 +10,8 @@ function adjuntarWorker() {
     if (tipo === "tortuga") escuchas.tortuga?.(evento.data);
     if (tipo === "resultado_validacion") escuchas.validacion?.(evento.data);
     if (tipo === "error") escuchas.error?.(evento.data);
+    if (tipo === "frc_led") escuchas.ledFrc?.(evento.data);
+    if (tipo === "frc_motor") escuchas.motorFrc?.(evento.data);
   };
 }
 
@@ -37,6 +39,9 @@ export function solicitarValidacion(especificacion) {
   worker?.postMessage({ tipo: "validar", especificacion });
 }
 
+export function sincronizarComponentesFrc(lista) {
+  worker?.postMessage({ tipo: "sincronizar_frc", componentes: lista });
+}
 export function sincronizarArchivos(arbol) {
   worker?.postMessage({ tipo: "sincronizar_archivos", archivos: aplanarArbol(arbol) });
 }
