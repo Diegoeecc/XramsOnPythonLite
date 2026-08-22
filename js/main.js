@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   establecerAlComenzarNivel(iniciarNivel);
   inicializarSandbox();
   inicializarAjustes();
-  inicializarBarraTitulo();
+  //inicializarBarraTitulo();
 
   mostrarPantalla("intro");
 

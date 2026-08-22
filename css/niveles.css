@@ -197,6 +197,24 @@
   height: 78vh;
 }
 
+/* Tablet y celular: en vez de apretar 3 columnas en un ancho que no
+   alcanza (lo que obligaba al navegador a achicar todo para que
+   quepa, incluido el editor), se apilan verticalmente. Cada sección
+   conserva su tamaño de fuente/editor real, solo cambia el acomodo. */
+@media (max-width: 900px) {
+  .nivel-layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto minmax(360px, 1fr) minmax(360px, 1fr);
+    width: 96vw;
+    height: auto;
+    max-height: none;
+  }
+
+  .nivel-instrucciones {
+    max-height: 220px;
+  }
+}
+
 .nivel-instrucciones {
   overflow-y: auto;
   background: var(--negro-panel);
