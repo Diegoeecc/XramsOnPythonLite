@@ -2,6 +2,12 @@
 
 html {
   font-size: 112.5%; /* sube la base de 16px a 18px, todo el rem se escala */
+  -webkit-text-size-adjust: 100%; /* evita que Safari en iPad/iPhone reduzca el
+                                      texto solo por considerar que una columna
+                                      es "angosta" — sin esto, el editor se ve
+                                      chico en iPad sin importar el font-size
+                                      que le pongamos en CSS */
+  text-size-adjust: 100%;
 }
 
 html, body {
