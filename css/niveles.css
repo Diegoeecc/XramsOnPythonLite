@@ -197,10 +197,7 @@
   height: 78vh;
 }
 
-/* Tablet y celular: en vez de apretar 3 columnas en un ancho que no
-   alcanza (lo que obligaba al navegador a achicar todo para que
-   quepa, incluido el editor), se apilan verticalmente. Cada sección
-   conserva su tamaño de fuente/editor real, solo cambia el acomodo. */
+
 @media (max-width: 1400px) {
   .nivel-layout {
     grid-template-columns: 1fr;
@@ -212,6 +209,12 @@
 
   .nivel-instrucciones {
     max-height: 220px;
+  }
+
+  .pantalla[data-pantalla="jugar-nivel"] {
+    overflow-y: auto;
+    align-items: flex-start;
+    padding: 1.5rem 0;
   }
 }
 

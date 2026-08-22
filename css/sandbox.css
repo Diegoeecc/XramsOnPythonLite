@@ -15,6 +15,22 @@
   height: 78vh;
 }
 
+@media (max-width: 1400px) {
+  .sandbox-layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto minmax(360px, 1fr) minmax(360px, 1fr);
+    width: 96vw;
+    height: auto;
+    max-height: none;
+  }
+
+  .pantalla[data-pantalla="sandbox"] {
+    overflow-y: auto;
+    align-items: flex-start;
+    padding: 1.5rem 0;
+  }
+}
+
 .explorador-item {
   display: flex;
   align-items: center;
