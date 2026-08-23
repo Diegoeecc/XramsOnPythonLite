@@ -197,27 +197,6 @@
   height: 78vh;
 }
 
-
-@media (max-width: 1400px) {
-  .nivel-layout {
-    grid-template-columns: 260px 1.3fr 0.8fr;
-    grid-template-rows: auto 62dvh 32dvh;
-    width: 96vw;
-    height: auto;
-    max-height: none;
-  }
-
-  .nivel-instrucciones {
-    max-height: 220px;
-  }
-
-  .pantalla[data-pantalla="jugar-nivel"] {
-    overflow-y: auto;
-    align-items: flex-start;
-    padding: 1.5rem 0;
-  }
-}
-
 .nivel-instrucciones {
   overflow-y: auto;
   background: var(--negro-panel);
