@@ -9,9 +9,9 @@
 
 .sandbox-layout {
   display: grid;
-  grid-template-columns: 220px 1.3fr 0.8fr;
+  grid-template-columns: 220px 1fr 1fr;
   gap: 1.5rem;
-  width: 94vw;
+  width: 100rem;
   height: 78vh;
 }
 
