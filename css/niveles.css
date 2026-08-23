@@ -191,7 +191,7 @@
 
 .nivel-layout {
   display: grid;
-  grid-template-columns: 260px 1fr 1fr;
+  grid-template-columns: 260px 1.3fr 0.8fr;
   gap: 1.5rem;
   width: 92vw;
   height: 78vh;

@@ -2,7 +2,7 @@
   position: absolute;
   top: 2rem;
   left: 2rem;
-  width: 150px;
+  width: 100px;
 }
 
 .menu-principal {
@@ -13,10 +13,10 @@
 }
 
 .titulo-menu {
-  width: clamp(360px, 42vw, 630px);
+  width: clamp(360px, 30vw, 630px);
   height: auto;
   margin-top: -7.5rem;
-  margin-bottom: -1rem;
+  margin-bottom: -5rem;
 }
 
 .boton-menu {
