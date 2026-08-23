@@ -9,7 +9,7 @@
 
 .sandbox-layout {
   display: grid;
-  grid-template-columns: 220px 1300px 280px;
+  grid-template-columns: 220px 900px 680px;
   gap: 1.5rem;
   width: 1800px;
   height: 78vh;
