@@ -191,10 +191,30 @@
 
 .nivel-layout {
   display: grid;
-  grid-template-columns: 260px 1.3fr 0.8fr;
+  grid-template-columns: 11.46vw 46.88vw 34vw;
   gap: 1.5rem;
-  width: 92vw;
+  width: min(1800px, 93.75vw);
   height: 78vh;
+}
+
+@media (max-width: 1400px) {
+  .nivel-layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 60dvh 36dvh;
+    width: 96vw;
+    height: auto;
+    max-height: none;
+  }
+
+  .nivel-instrucciones {
+    max-height: 220px;
+  }
+
+  .pantalla[data-pantalla="jugar-nivel"] {
+    overflow-y: auto;
+    align-items: flex-start;
+    padding: 1.5rem 0;
+  }
 }
 
 .nivel-instrucciones {
