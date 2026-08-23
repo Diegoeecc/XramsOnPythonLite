@@ -200,7 +200,7 @@
 
 @media (max-width: 1400px) {
   .nivel-layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: 260px 1.3fr 0.8fr;
     grid-template-rows: auto 62dvh 32dvh;
     width: 96vw;
     height: auto;
