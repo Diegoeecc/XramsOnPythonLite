@@ -113,7 +113,7 @@ html, body {
 
 .boton-volver {
   position: absolute;
-  top: 0.2rem;
+  top: 1.5rem;
   left: 1.5rem;
   background: transparent;
   border: 1px solid var(--negro-borde);

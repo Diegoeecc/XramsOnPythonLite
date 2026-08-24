@@ -4,7 +4,7 @@ import { ejecutarCodigo, detenerEjecucion, establecerEscuchas, sincronizarArchiv
 import { inicializarLienzoTortuga, procesarComandoTortuga } from "../pyodide/tortugaCanvas.js";
 import { traducirError } from "../errores.js";
 import { pedirConfirmacion } from "../modal.js";
-import { crearExplorador } from "./explorador.js";
+//import { crearExplorador } from "./explorador.js";
 import { inicializarCargarGuardar } from "./cargarGuardar.js";
 
 let editor = null;
