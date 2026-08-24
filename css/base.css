@@ -113,7 +113,7 @@ html, body {
 
 .boton-volver {
   position: absolute;
-  top: 1.5rem;
+  top: 0.2rem;
   left: 1.5rem;
   background: transparent;
   border: 1px solid var(--negro-borde);
@@ -122,6 +122,7 @@ html, body {
   border-radius: 8px;
   font-family: var(--fuente-cuerpo);
   cursor: pointer;
+  z-index: 999999;
   transition: color 200ms ease, border-color 200ms ease;
 }
 
