@@ -222,7 +222,7 @@
   background: var(--negro-panel);
   border: 1px solid var(--negro-borde);
   border-radius: var(--radio-borde);
-  padding: 1.5rem;
+  padding: 3.5rem;
   text-align: left;
 }
 
