@@ -17,7 +17,7 @@
 
 @media (max-width: 1400px) {
   .sandbox-layout {
-    top: 5rem;
+    margin-top: 5rem;
     grid-template-columns: 1fr;
     grid-template-rows: auto 60dvh 36dvh;
     width: 96vw;
