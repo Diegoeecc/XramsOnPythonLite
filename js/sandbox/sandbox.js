@@ -1,35 +1,14 @@
 import { mostrarPantalla } from "../pantallas.js";
 import { crearEditorCodigo } from "../editorCodigo.js";
-import { ejecutarCodigo, detenerEjecucion, establecerEscuchas, sincronizarArchivos } from "../pyodide/pyodideBridge.js";
+import { ejecutarCodigo, detenerEjecucion, establecerEscuchas } from "../pyodide/pyodideBridge.js";
 import { inicializarLienzoTortuga, procesarComandoTortuga } from "../pyodide/tortugaCanvas.js";
 import { traducirError } from "../errores.js";
-import { pedirConfirmacion } from "../modal.js";
-//import { crearExplorador } from "./explorador.js";
-import { inicializarCargarGuardar } from "./cargarGuardar.js";
 
 let editor = null;
-let explorador = null;
 let ejecutando = false;
 
 export function inicializarSandbox() {
   editor = crearEditorCodigo("sandbox-codigo");
-
-  explorador = crearExplorador({
-    contenedorId: "sandbox-arbol",
-    botonNuevoArchivoId: "sandbox-nuevo-archivo",
-    botonNuevaCarpetaId: "sandbox-nueva-carpeta",
-    onSeleccionarArchivo: (nodo) => {
-      editor.establecerCodigo(nodo.contenido || "");
-      document.getElementById("sandbox-archivo-actual").textContent = nodo.nombre;
-    },
-    alSolicitarConfirmacion: (mensaje, onConfirmar) => pedirConfirmacion({ mensaje, onConfirmar }),
-  });
-
-  inicializarCargarGuardar(explorador);
-
-  editor.textarea.addEventListener("input", () => {
-    explorador.actualizarContenidoArchivoActivo(editor.obtenerCodigo());
-  });
 
   document.querySelectorAll(".sandbox-tab").forEach((boton) => {
     boton.addEventListener("click", () => mostrarVista(boton.dataset.vista));
@@ -62,8 +41,7 @@ function establecerEscuchasSandbox() {
   establecerEscuchas({
     salida: (d) => { document.getElementById("sandbox-consola").textContent += d.texto; },
     error: (d) => {
-      const huboVarios = explorador.contarArchivos() > 1;
-      document.getElementById("sandbox-consola").textContent += "\n" + traducirError(d.texto, huboVarios) + "\n";
+      document.getElementById("sandbox-consola").textContent += "\n" + traducirError(d.texto, false) + "\n";
     },
     tortuga: (d) => procesarComandoTortuga(d.comando),
     fin: (d) => {
@@ -83,8 +61,6 @@ function ejecutar() {
   document.getElementById("sandbox-ejecutar").disabled = true;
   document.getElementById("sandbox-detener").disabled = false;
 
-  explorador.actualizarContenidoArchivoActivo(editor.obtenerCodigo());
-  sincronizarArchivos(explorador.obtenerArbol());
   ejecutarCodigo(editor.obtenerCodigo());
 }
 
@@ -98,7 +74,6 @@ function detener() {
 
 function salir() {
   detenerEjecucion();
-  explorador.reiniciarArbol();
   document.getElementById("sandbox-consola").textContent = "";
   mostrarPantalla("menu");
 }
