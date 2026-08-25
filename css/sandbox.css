@@ -17,7 +17,6 @@
 
 @media (max-width: 1400px) {
   .sandbox-layout {
-    margin-top: 5rem;
     grid-template-columns: 1fr;
     grid-template-rows: 60dvh 36dvh;
     width: 96vw;
@@ -27,8 +26,14 @@
 
   .pantalla[data-pantalla="sandbox"] {
     overflow-y: auto;
-    align-items: flex-start;
+    justify-content: flex-start;
     padding: 1.5rem 0;
+  }
+
+  .pantalla[data-pantalla="sandbox"] .boton-volver {
+    position: static;
+    align-self: flex-start;
+    margin: 0 0 1rem 2vw;
   }
 }
 

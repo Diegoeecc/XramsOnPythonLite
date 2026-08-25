@@ -212,8 +212,18 @@
 
   .pantalla[data-pantalla="jugar-nivel"] {
     overflow-y: auto;
-    align-items: flex-start;
+    justify-content: flex-start; /* apila desde arriba, en vez de centrar verticalmente */
     padding: 1.5rem 0;
+  }
+
+  /* El botón "Salir" pasa a ser parte del flujo normal, en vez de
+     flotar encima de todo con position:absolute. Así nunca se monta
+     sobre las instrucciones, y sigue siendo lo primero que se ve
+     arriba de todo, fácil de encontrar. */
+  .pantalla[data-pantalla="jugar-nivel"] .boton-volver {
+    position: static;
+    align-self: flex-start;
+    margin: 0 0 1rem 2vw;
   }
 }
 
@@ -222,7 +232,7 @@
   background: var(--negro-panel);
   border: 1px solid var(--negro-borde);
   border-radius: var(--radio-borde);
-  padding: 3.5rem;
+  padding: 1.5rem;
   text-align: left;
 }
 
